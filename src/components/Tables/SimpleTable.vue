@@ -1,9 +1,15 @@
 <template>
   <div>
+    
     <md-table v-model="users" :table-header-color="tableHeaderColor">
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Country">{{ item.country }}</md-table-cell>
+    
+      <md-table-row v-if="true || item.years.includes('2019') && item.domain.includes('finance')" slot="md-table-row" slot-scope="{item}">
+        <md-table-cell md-label="Company name">
+          <div >
+            {{ item.companyName }}
+            <DialogueCustom title="hello"/>
+          </div></md-table-cell>
+        <md-table-cell md-label="Domain"><div :key="item" v-for="item of item.domain">{{ item }}, </div></md-table-cell>
         <md-table-cell md-label="City">{{ item.city }}</md-table-cell>
         <md-table-cell md-label="Salary">{{ item.salary }}</md-table-cell>
       </md-table-row>
@@ -12,6 +18,7 @@
 </template>
 
 <script>
+import DialogueCustom from "../ShowDescription.vue"
 export default {
   name: "simple-table",
   props: {
@@ -20,47 +27,84 @@ export default {
       default: "",
     },
   },
+  components: {DialogueCustom},
   data() {
     return {
       selected: [],
       users: [
         {
-          name: "Dakota Rice",
+          companyName: "Dundar milflin paper company",
           salary: "$36,738",
-          country: "Niger",
+          domain: ["finance, analytics"],
           city: "Oud-Turnhout",
+          years: ["2020",'2019',"2017","2016"],
+          jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
         },
-        {
-          name: "Minerva Hooper",
-          salary: "$23,738",
-          country: "Curaçao",
-          city: "Sinaai-Waas",
+            {
+          companyName: "Olivandar's wand shop",
+          salary: "$36,738",
+          domain: ["Analytics"],
+          city: "Oud-Turnhout",
+          years: ["2020","2018","2017","2015"],
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
         },
-        {
-          name: "Sage Rodriguez",
-          salary: "$56,142",
-          country: "Netherlands",
-          city: "Overland Park",
+               {
+          companyName: "Gringotts",
+          salary: "$36,738",
+          domain: ["Analytics", "finance"],
+          city: "Diagon ALley",
+          years: ["2020","2019","2017","2016"],
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
         },
-        {
-          name: "Philip Chaney",
-          salary: "$38,735",
-          country: "Korea, South",
-          city: "Gloucester",
+               {
+          companyName: "Top Gun Academy",
+          salary: "$36,738",
+          domain: ["Flying"],
+          city: "flying",
+           years: ["2020","2018","2017","2016"],
+            jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
         },
-        {
-          name: "Doris Greene",
-          salary: "$63,542",
-          country: "Malawi",
-          city: "Feldkirchen in Kārnten",
+               {
+          companyName: "Jacob's Bakery",
+          salary: "$36,738",
+          domain: ["culinary"],
+          city: "Oud-Turnhout", 
+           years: ["2020","2018","2017","2016"], 
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
+
         },
-        {
-          name: "Mason Porter",
-          salary: "$78,615",
-          country: "Chile",
-          city: "Gloucester",
+               {
+          companyName: "Zara",
+          salary: "$36,738",
+          domain: ["Analytics", "finance"],
+          city: "Oud-Turnhout",
+          years: ["2020","2018","2017","2016"],
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
         },
-      ],
+               {
+          companyName: "McDonalds",
+          salary: "$36,738",
+          domain: "Niger",
+          city: "Oud-Turnhout",
+          years: ["2020","2018","2017","2016"],
+           jobDescription:"abcdfrcd",
+          questionsAsked: ["abc","abc","abc","osdues"],
+
+        },]
     };
   },
 };
